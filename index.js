@@ -27,6 +27,24 @@ async function run() {
 		const package_collection = database.collection('Package');
 		const booking_collection = database.collection('Booking');
 		const cart_collection = database.collection('Cart');
+		const air_collection = database.collection('Air')
+		const services_collection = database.collection('Services');
+
+
+		app.get('/airticket', async (req, res) => {
+			const air_ticket = await air_collection.find({}).toArray();
+			// console.log("inside ", packages)
+			res.json(air_ticket);
+		});
+
+		app.get('/services', async (req, res) => {
+			const services_ = await services_collection.find({}).toArray();
+			// console.log("inside ", packages)
+			res.json(services_);
+		});
+
+
+
 
 		// get api,show all packages
 		app.get('/packages', async (req, res) => {
